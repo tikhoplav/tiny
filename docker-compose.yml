@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile_inline: |
+        FROM node:20-alpine
+        ENV PNPM_HOME="/pnpm"
+        ENV PATH="$$PNPM_HOME:$$PATH"
+        RUN corepack enable
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - 80:80
+    command: ['pnpm', 'dev']
