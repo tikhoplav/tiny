@@ -11,6 +11,7 @@
 
 - [ ] Setup basic 3d WebGPU render within `tiny/core`;
 - [ ] Render a [basic scene](https://webgpu.github.io/webgpu-samples/?sample=normalMap#mesh.ts) (camera, cube, lightning);
+- [ ] MSAA;
 - [ ] Canvas resize, animation (orbital camera movement);
 - [ ] Add `clang` [c to wasm pipeline](https://surma.dev/things/c-to-webassembly/);
 - [ ] Turn rendering functions to FFI (a subset of high level function, as FFI is expensive);
@@ -31,4 +32,9 @@
 - [ ] PostFX (pixelation)???;
 - [ ] GLTF import;
 - [ ] Skeletal animation;
+
+### ECS
+
+- [ ] C lib for ECS that works both for WASM and multithreaded BE app;
+- [ ] Use C as a language for the server or figure out node workers + WASM?;
 
