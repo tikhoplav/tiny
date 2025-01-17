@@ -9,7 +9,7 @@
 
 ### Basics
 
-- [ ] Setup basic 3d WebGPU render within `tiny/core`;
+- [x] Setup basic 3d WebGPU render within `tiny/core`;
 - [ ] Render a [basic scene](https://webgpu.github.io/webgpu-samples/?sample=normalMap#mesh.ts) (camera, cube, lightning);
 - [ ] MSAA;
 - [ ] Canvas resize, animation (orbital camera movement);
