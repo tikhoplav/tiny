@@ -11,7 +11,7 @@
 
 - [x] Setup basic 3d WebGPU render within `tiny/core`;
 - [ ] Render a [basic scene](https://webgpu.github.io/webgpu-samples/?sample=normalMap#mesh.ts) (camera, cube, lightning);
-- [ ] MSAA;
+- [x] MSAA;
 - [ ] Canvas resize, animation (orbital camera movement);
 - [ ] Add `clang` [c to wasm pipeline](https://surma.dev/things/c-to-webassembly/);
 - [ ] Turn rendering functions to FFI (a subset of high level function, as FFI is expensive);

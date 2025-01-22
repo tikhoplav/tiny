@@ -14,6 +14,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      wgpu-matrix:
+        specifier: ^3.3.0
+        version: 3.3.0
     devDependencies:
       '@eslint/js':
         specifier: ^9.17.0
@@ -979,6 +982,9 @@ packages:
       yaml:
         optional: true
 
+  wgpu-matrix@3.3.0:
+    resolution: {integrity: sha512-MRdywXdzTwX9pVbO5Z/oRX9l7464Wkfv28glG1c7t7s5v/0Dvts6yV8b4AOTOTl1UDGq9KUEAoSN6KW5P12ruQ==}
+
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
     engines: {node: '>= 8'}
@@ -1788,6 +1794,8 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.5
       fsevents: 2.3.3
+
+  wgpu-matrix@3.3.0: {}
 
   which@2.0.2:
     dependencies:
