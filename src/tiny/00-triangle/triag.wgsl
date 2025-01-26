@@ -4,7 +4,7 @@ struct VertexOut {
 }
 
 @vertex
-fn main(
+fn v_main(
   @builtin(vertex_index) VertexIndex : u32
 ) -> VertexOut {
 
@@ -24,4 +24,9 @@ fn main(
   out.position = vec4f(pos[VertexIndex], 0.0, 1.0);
   out.color = col[VertexIndex];
   return out;
+}
+
+@fragment
+fn f_main(fragData: VertexOut) -> @location(0) vec4f {
+  return fragData.color;
 }

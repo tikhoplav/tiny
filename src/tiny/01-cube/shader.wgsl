@@ -9,7 +9,7 @@ struct VertexOut {
 }
 
 @vertex
-fn main(
+fn v_main(
   @location(0) position: vec4f,
   @location(1) color: vec4f,
 ) -> VertexOut {
@@ -19,4 +19,9 @@ fn main(
   out.color = color;
 
   return out;
+}
+
+@fragment
+fn f_main(fragData: VertexOut) -> @location(0) vec4f {
+  return fragData.color;
 }

@@ -37,4 +37,3 @@
 
 - [ ] C lib for ECS that works both for WASM and multithreaded BE app;
 - [ ] Use C as a language for the server or figure out node workers + WASM?;
-
