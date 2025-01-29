@@ -1,4 +1,4 @@
-import shader from './triag.wgsl?raw'
+import shader from './shader.wgsl?raw'
 
 export async function init({ canvas }: { canvas: HTMLCanvasElement }) {
   const ctx: GPUCanvasContext | null = canvas.getContext('webgpu')
@@ -18,12 +18,30 @@ export async function init({ canvas }: { canvas: HTMLCanvasElement }) {
     code: shader,
   })
 
+  const bufLayoutDescVertex: GPUVertexBufferLayout = {
+    attributes: [
+      {
+        shaderLocation: 0,
+        offset: 0,
+        format: 'float32x3',
+      },
+      {
+        shaderLocation: 1,
+        offset: 12,
+        format: 'float32x3',
+      },
+    ],
+    arrayStride: 24,
+    stepMode: 'vertex',
+  }
+
   const pipeline = device.createRenderPipeline({
     label: 'color_triangle',
     layout: 'auto',
     vertex: {
       module: shaderModule,
       entryPoint: 'v_main',
+      buffers: [bufLayoutDescVertex],
     },
     fragment: {
       module: shaderModule,
@@ -32,11 +50,38 @@ export async function init({ canvas }: { canvas: HTMLCanvasElement }) {
     },
     primitive: {
       topology: 'triangle-list',
+      frontFace: 'cw',
+      cullMode: 'back',
     },
     multisample: {
       count: 4,
     },
   })
+
+
+
+  // prettier-ignore
+  const vertexData = new Float32Array([
+    0.0, 0.5, 0.0,
+    1.0, 0.0, 0.0,
+
+    0.43301, -0.25, 0.0,
+    0.0, 1.0, 0.0,
+
+    -0.43301, -0.25, 0.0,
+    0.0, 0.0, 1.0,
+  ])
+
+  const bufVertex = device.createBuffer({
+    size: vertexData.length * 4,
+    usage: GPUBufferUsage.VERTEX,
+    mappedAtCreation: true,
+  })
+  new Float32Array(bufVertex.getMappedRange())
+    .set(vertexData)
+  bufVertex.unmap()
+
+
 
   const { devicePixelRatio } = window
   let txMSAA: GPUTexture
@@ -78,6 +123,7 @@ export async function init({ canvas }: { canvas: HTMLCanvasElement }) {
     const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor)
 
     passEncoder.setPipeline(pipeline)
+    passEncoder.setVertexBuffer(0, bufVertex)
     passEncoder.draw(3)
     passEncoder.end()
 
