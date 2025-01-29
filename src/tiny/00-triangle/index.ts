@@ -58,8 +58,6 @@ export async function init({ canvas }: { canvas: HTMLCanvasElement }) {
     },
   })
 
-
-
   // prettier-ignore
   const vertexData = new Float32Array([
     0.0, 0.5, 0.0,
@@ -77,11 +75,8 @@ export async function init({ canvas }: { canvas: HTMLCanvasElement }) {
     usage: GPUBufferUsage.VERTEX,
     mappedAtCreation: true,
   })
-  new Float32Array(bufVertex.getMappedRange())
-    .set(vertexData)
+  new Float32Array(bufVertex.getMappedRange()).set(vertexData)
   bufVertex.unmap()
-
-
 
   const { devicePixelRatio } = window
   let txMSAA: GPUTexture
@@ -121,7 +116,6 @@ export async function init({ canvas }: { canvas: HTMLCanvasElement }) {
 
     const commandEncoder = device.createCommandEncoder()
     const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor)
-
     passEncoder.setPipeline(pipeline)
     passEncoder.setVertexBuffer(0, bufVertex)
     passEncoder.draw(3)
